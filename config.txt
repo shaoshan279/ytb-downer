@@ -1,5 +1,5 @@
 --batch-file playlist.txt
---output downloads/%(id)s.%(ext)s
+--output %(id)s.%(ext)s
 --external-downloader aria2c
 --cookies cookies.txt
 # --continue
