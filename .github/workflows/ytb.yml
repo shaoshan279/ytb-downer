@@ -34,7 +34,15 @@ jobs:
           EOF
       - name: download
         run: |
+          git config --local user.email "651916120@qq.com"
+          git config --local user.name "shaoshan279"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.gTOKEN }}@github.com/${{ github.repository }}
+          git pull --rebase
           yt-dlp --config-location config.txt
+          git add .
+          git commit -m "download youtube video"
+          git push
+
           
 #      - name: upload to onedrive by rclone
 #        run: |
