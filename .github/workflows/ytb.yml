@@ -41,9 +41,7 @@ jobs:
           yt-dlp --config-location config.txt
           git add .
           git commit -m "download youtube video"
-          git push
-
-          
+          git push  
 #      - name: upload to onedrive by rclone
 #        run: |
 #          rclone copy ./downloads asmr:/downloads -P
