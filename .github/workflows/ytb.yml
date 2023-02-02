@@ -39,8 +39,9 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
          github_token: ${{ secrets.GTOKEN }}
-         publish_dir: ./publish
+         publish_dir: ./downloads
          publish_branch: down-pages
+         exclude_assets: '**.nojekyll,.nojekyll'
 #      - name: upload to onedrive by rclone
 #        run: |
 #          rclone copy ./downloads asmr:/downloads -P
