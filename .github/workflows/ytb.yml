@@ -32,13 +32,13 @@ jobs:
           cat << EOF > cookies.txt
           ${{secrets.YOUTUBE_COOKIES}} 
           EOF
-      - name: download
-        run: |
-          yt-dlp --config-location config.txt
       - name: commit
         run: |
          git config --global user.email shaoshan279@users.noreply.github.com
          git config --global user.name shaoshan279
+         git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+         git pull --rebase
+         yt-dlp --config-location config.txt
          git add .
          git commit -m "update" -a
          git push
