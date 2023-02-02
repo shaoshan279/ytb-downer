@@ -24,9 +24,9 @@ jobs:
         run: |
           sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
           sudo chmod a+rx /usr/local/bin/yt-dlp
-#      - name: install aria2
-#        run: |
-#          sudo apt-get install aria2
+      - name: install aria2
+        run: |
+          sudo apt-get install aria2
       - name: write youtube cookies
         run: |
           cat << EOF > cookies.txt
