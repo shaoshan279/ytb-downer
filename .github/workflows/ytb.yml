@@ -15,7 +15,7 @@ jobs:
 #        run: |
 #          sudo -v ; curl https://rclone.org/install.sh | sudo bash
 #      - name: write rclone config
-#        run: |
+#        run: | 
 #          mkdir -p ~/.config/rclone/
 #          cat << EOF > ~/.config/rclone/rclone.conf
 #          ${{secrets.RCLONE_CONFIG}} 
@@ -35,16 +35,11 @@ jobs:
       - name: download
         run: |
           yt-dlp --config-location config.txt
-      - name: commit
-        run: |
-         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-         git config --global user.name "github-actions[bot]"
-         git add .
-         git commit -m "update" -a
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: peaceiris/actions-gh-pages@v3
         with:
          github_token: ${{ secrets.GTOKEN }}
+         publish_dir: ./downloads
 #      - name: upload to onedrive by rclone
 #        run: |
 #          rclone copy ./downloads asmr:/downloads -P
