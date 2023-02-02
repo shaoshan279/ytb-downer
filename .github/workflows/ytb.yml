@@ -34,14 +34,18 @@ jobs:
           EOF
       - name: download
         run: |
-          git config --local user.email "651916120@qq.com"
-          git config --local user.name "shaoshan279"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull --rebase
           yt-dlp --config-location config.txt
-          git add .
-          git commit -m "download youtube video"
-          git push  
+      - name: commit
+        run: |
+         git config --global user.email 651916120@qq.com
+         git config --global user.name shaoshan279
+         git add .
+         git commit -m "update" -a
+        
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
 #      - name: upload to onedrive by rclone
 #        run: |
 #          rclone copy ./downloads asmr:/downloads -P
