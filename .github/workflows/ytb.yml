@@ -41,7 +41,7 @@ jobs:
          github_token: ${{ secrets.GTOKEN }}
          publish_dir: ./downloads
          publish_branch: down-pages
-         exclude_assets: '**.nojekyll,.nojekyll'
+         exclude_assets: '**.nojekyll,.nojekyll,**.txt'
 #      - name: upload to onedrive by rclone
 #        run: |
 #          rclone copy ./downloads asmr:/downloads -P
